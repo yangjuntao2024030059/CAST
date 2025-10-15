@@ -66,7 +66,7 @@ def parse_json_response(response_text: str, mode: str) -> Union[Dict, List]:
     json_content = extract_json_from_response(response_text)
 
     if not json_content:
-        print(f"无法从响应中提取JSON内容: {response_text}")
+       # print(f"无法从响应中提取JSON内容: {response_text}")
         return {"factor": []} if mode == "factors" else {}
 
     try:
@@ -132,7 +132,7 @@ def process_chunk(model_LLM, prompt_template, chunk, mode, existing_factors=None
                 )
 
                 if not response or 'message' not in response or 'content' not in response['message']:
-                    print(f"尝试 {attempt + 1}: 无效的响应格式")
+                   # print(f"尝试 {attempt + 1}: 无效的响应格式")
                     continue
 
                 result = parse_json_response(response['message']['content'], mode)
